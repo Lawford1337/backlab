@@ -1,0 +1,12 @@
+
+
+
+{% block content %}
+<h1>sing up</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type='submit'>sing up</button>
+     <p>if u have account, <a href="{% url 'login_view' %}">click</a></p>
+</form>
+{% endblock %}

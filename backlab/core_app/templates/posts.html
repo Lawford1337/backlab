@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>All posts</h1>
+
+<a href="{% url 'create_post_view' %}">Create New Post</a>
+<hr>
+
+{% for post in posts %}
+    <div>
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.content }}</p>
+        <small>{{ post.created_at }}</small>
+        <p>created by: {{ post.user.username }}</p>
+        <a href="{% url 'update_post_view' pk=post.pk %}">Edit</a>
+        <a href="{% url 'delete_view' pk=post.pk %}">delete</a>
+
+    </div>
+
+    <hr>
+{% endfor %}
+
+{% endblock %}

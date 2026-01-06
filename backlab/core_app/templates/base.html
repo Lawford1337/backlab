@@ -1,0 +1,39 @@
+{% load static %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<style>
+    header {
+        display: flex;
+        align-items: center;
+        justify-content:space-between;
+    }
+</style>
+<body>
+    <header>
+        <a href="#">My App</a>
+     <div>
+        {% if user.is_authenticated %}
+        <p>Hello,username</p>
+        <a href="{% url 'create_post_view'%}">Create Post</a>
+        <a href="{% url 'logout_view'%}">logout</a>
+        {% else %}
+        <a href="{% url 'register_view'%}">Sing Up</a>
+        <a href="{% url 'login_view'%}">Login</a>
+        {% endif %}
+    </div>
+    </header>
+
+  {% block content %}
+  {% endblock %}
+
+
+    <footer>
+        &copy; 2026. My App
+    </footer>
+</body>
+</html>
